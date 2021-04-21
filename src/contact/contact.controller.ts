@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { DeleteResult } from 'typeorm';
 import { ContactService } from './contact.service';
 import { CreateContactDTO } from './dto/createContactDTO';
 import { UpdateContactDTO } from './dto/updateContactDTO';
@@ -27,17 +28,20 @@ export class ContactController {
   }
 
   @Get(':id')
-  getOneContact(@Param('id') id: string) {
-    return this.contactService.findOne(id);
+  async getOneContact(@Param('id') id: string): Promise<Contact> {
+    return await this.contactService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() contact: UpdateContactDTO) {
-    return this.update(id, contact);
+  async update(
+    @Param('id') id: string,
+    @Body() contact: UpdateContactDTO,
+  ): Promise<Contact> {
+    return await this.update(id, contact);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string) {
-    return this.contactService.delete(id);
+  async delete(@Param('id') id: string): Promise<DeleteResult> {
+    return await this.contactService.delete(id);
   }
 }

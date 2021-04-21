@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { DeleteResult } from 'typeorm';
 import { CreateEmailDTO } from './dto/createEmailDTO';
 import { UpdateEmailDTO } from './dto/updateEmailDTO';
 import { EmailService } from './email.service';
@@ -22,8 +23,8 @@ export class EmailController {
   }
 
   @Get(':id')
-  getOneMail(@Param('id') id: string) {
-    return this.emailService.findOne(id);
+  async getOneMail(@Param('id') id: string): Promise<Email> {
+    return await this.emailService.findOne(id);
   }
 
   @Post()
@@ -37,7 +38,7 @@ export class EmailController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string) {
-    return this.emailService.delete(id);
+  async delete(@Param('id') id: string): Promise<DeleteResult> {
+    return await this.emailService.delete(id);
   }
 }
