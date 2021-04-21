@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsArray, IsString } from 'class-validator';
-import { CreateEmailDTO } from 'src/email/dto/createEmailDTO';
+import { CreateEmailDTO } from '../../email/dto/createEmailDTO';
 
 export class CreateContactDTO {
   @IsString()

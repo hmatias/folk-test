@@ -1,5 +1,5 @@
-import { Email } from 'src/email/entities/email.entity';
-import { DefaultDate } from 'src/utils/defaultDate.entity';
+import { Email } from '../../email/entities/email.entity';
+import { DefaultDate } from '../../utils/defaultDate.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity('contact')
