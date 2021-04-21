@@ -13,9 +13,11 @@ export class ContactService {
   ) {}
 
   async add(contact: CreateContactDTO): Promise<Contact> {
-    const newContact = await this.contactRepository.save(contact);
+    return await this.contactRepository.save(contact);
+  }
 
-    return await newContact;
+  async addMany(contacts: CreateContactDTO[]): Promise<Contact[]> {
+    return await this.contactRepository.save(contacts);
   }
 
   async findOne(id: string): Promise<Contact> {

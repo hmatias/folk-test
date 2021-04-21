@@ -1,6 +1,7 @@
 import { Email } from '../../email/entities/email.entity';
 import { DefaultDate } from '../../utils/defaultDate.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { CustomField } from '../../custom-field/entities/customField.entity';
 
 @Entity('contact')
 export class Contact extends DefaultDate {
@@ -21,4 +22,10 @@ export class Contact extends DefaultDate {
     eager: true,
   })
   email: Email[];
+
+  @OneToMany(() => CustomField, (cf) => cf.contact, {
+    cascade: true,
+    eager: true,
+  })
+  customField: CustomField[];
 }
