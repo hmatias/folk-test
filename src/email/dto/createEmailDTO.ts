@@ -1,8 +1,8 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsEmail, IsNotEmpty } from 'class-validator';
 
 export class CreateEmailDTO {
-  @IsString()
+  @IsEmail()
   @IsNotEmpty()
   value: string;
 

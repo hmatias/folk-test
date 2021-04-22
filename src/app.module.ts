@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmailModule } from './email/email.module';
 import { ContactModule } from './contact/contact.module';
+import { ImportDataModule } from './import-data/import-data.module';
+import { CustomFieldModule } from './custom-field/custom-field.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { ContactModule } from './contact/contact.module';
       synchronize: true,
     }),
     ContactModule,
+    ImportDataModule,
+    CustomFieldModule,
   ],
   controllers: [AppController],
   providers: [AppService],

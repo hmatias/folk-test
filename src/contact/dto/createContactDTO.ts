@@ -1,8 +1,17 @@
 import { Type } from 'class-transformer';
 import { IsArray, IsString } from 'class-validator';
-import { CreateEmailDTO } from 'src/email/dto/createEmailDTO';
+import { CreateEmailDTO } from '../../email/dto/createEmailDTO';
+import { CustomFieldDTO } from '../../custom-field/dto/customFieldDTO';
 
 export class CreateContactDTO {
+  constructor() {
+    this.pFirstname = '';
+    this.pLastname = '';
+    this.cName = '';
+    this.email = [];
+    this.customField = [];
+  }
+
   @IsString()
   pFirstname: string;
 
@@ -15,4 +24,8 @@ export class CreateContactDTO {
   @IsArray()
   @Type(() => CreateEmailDTO)
   email: CreateEmailDTO[];
+
+  @IsArray()
+  @Type(() => CustomFieldDTO)
+  customField: CustomFieldDTO[];
 }

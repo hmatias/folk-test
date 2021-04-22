@@ -1,0 +1,21 @@
+version: '3'
+services:
+  database:
+    image: 'postgres'
+    networks:
+      db:
+        ipv4_address: 172.18.0.44
+    env_file:
+      - database.env
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+volumes:
+  database-data:
+
+networks:
+  db:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24

@@ -1,6 +1,7 @@
 import { Type } from 'class-transformer';
 import { IsArray, IsOptional, IsString } from 'class-validator';
-import { CreateEmailDTO } from 'src/email/dto/createEmailDTO';
+import { CreateEmailDTO } from '../../email/dto/createEmailDTO';
+import { CustomFieldDTO } from '../../custom-field/dto/customFieldDTO';
 
 export class UpdateContactDTO {
   @IsString()
@@ -19,4 +20,8 @@ export class UpdateContactDTO {
   @IsOptional()
   @Type(() => CreateEmailDTO)
   email: CreateEmailDTO[];
+
+  @IsArray()
+  @Type(() => CustomFieldDTO)
+  customField: CustomFieldDTO[];
 }

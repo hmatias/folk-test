@@ -1,8 +1,8 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsEmail, IsOptional } from 'class-validator';
 
 export class UpdateEmailDTO {
-  @IsString()
+  @IsEmail()
   @IsOptional()
   value: string;
 
